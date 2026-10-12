@@ -29,7 +29,7 @@ const LISTA_MATERIAIS: MaterialItem[] = [
   // --------------------------------------------------------------------------
   // ABA 1: DRIVERS MILITÂNCIA
   // --------------------------------------------------------------------------
-    {
+  {
     id: 'mat-9',
     titulo: 'Drive Diverso - Público',
     categoria: 'drivers',
@@ -39,6 +39,17 @@ const LISTA_MATERIAIS: MaterialItem[] = [
     corTag: 'bg-yellow-100 text-yellow-800 border-yellow-200',
     linkDownload: 'https://drive.google.com/drive/u/0/folders/1LbYfXCnnI7-APqRltwTfp7GbAxsdbCnz?fbclid=PAb21jcAU07ahleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp0Wol5RMhUw6cfkCXjU0owyocuCfR-VVz1rfz6i801dIH98l3vD1BiZs_2xR_aem_r8zjBo25xx8O_UINaKQ9Nw',
     isDestaque: true,
+  },
+  // Posição 2 na grade de drivers: Álbum Google Fotos com artes digitais para virada de votos
+  {
+    id: 'mat-artes-digitais',
+    titulo: 'Vira votos - Artes digitais',
+    categoria: 'drivers',
+    formato: 'Google Fotos',
+    tamanho: 'Nuvem (Online)',
+    descricao: 'Acervo de imagens para ajudar na virada de voto, postar em redes sociais, compartilhar com amigos, com pessoas indecisas, que não foram votar, compartilhar com todos!',
+    corTag: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    linkDownload: 'https://photos.google.com/share/AF1QipPsmRfPjoDjXmqB_Yw-bySabagLqBGH89IjVxB5DGFTVy8OBS9yog14tV4TI8Rf9w?key=eHFTb0g1NU8zS0NvRjV3Uzd5Z2JJeFpNaWRuaHBR',
   },
   {
     id: 'mat-7',
@@ -65,6 +76,18 @@ const LISTA_MATERIAIS: MaterialItem[] = [
   // --------------------------------------------------------------------------
   // ABA 2: SITES PARA FICAR LIGADO
   // --------------------------------------------------------------------------
+  // Posição 1 na grade de sites (em destaque): Acervo da Vitória
+  {
+    id: 'mat-acervo-vitoria',
+    titulo: 'Acervo da Vitória',
+    categoria: 'sites',
+    formato: 'Link Web',
+    tamanho: 'Online',
+    descricao: 'Acervo contendo inúmeros arquivos de vídeos para redes sociais, matérias, lambes, artes; um dos sites mais completos para a militância.',
+    corTag: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    linkDownload: 'https://acervodavitoria.pages.dev/',
+    isDestaque: true,
+  },
   {
     id: 'mat-10',
     titulo: 'Jones Manoel 2026 - Vídeos',
@@ -145,8 +168,9 @@ export default function ConteudosView({ abaAtiva = 'drivers', setAbaAtiva }: Con
             <span className="text-xs uppercase tracking-widest text-red-200 font-extrabold block">
               Central de Mobilização & Propaganda
             </span>
+            {/* Título de destaque da seção atualizado conforme solicitação */}
             <h2 className="text-2xl sm:text-4xl font-black mt-1">
-              Materiais Oficiais da Campanha
+              Materiais da militância
             </h2>
             <p className="text-sm text-red-100 mt-1 max-w-xl">
               Navegue pelas abas abaixo para baixar panfletos, materiais para redes sociais ou acessar os drives em nuvem da militância.
@@ -231,7 +255,7 @@ export default function ConteudosView({ abaAtiva = 'drivers', setAbaAtiva }: Con
                   {downloadConcluido === item.id
                     ? 'Acessado!'
                     : item.categoria === 'drivers'
-                    ? 'Abrir Drive'
+                    ? (item.formato.includes('Fotos') ? 'Abrir Fotos' : 'Abrir Drive')
                     : 'Acessar link'}
                 </button>
               </div>
